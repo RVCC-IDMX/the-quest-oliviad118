@@ -14,11 +14,12 @@
 // Fill in the empty strings with your hero's details
 // Tip: See docs/emojis-and-encoding.md for emoji ideas!
 
-const heroName = "";        // Your hero's name (e.g., "Luna the Brave")
-const heroEmoji = "";       // Your hero's emoji (e.g., "🧙" or "⚔️")
-const questItem = "";       // What they're seeking (e.g., "Golden Keyboard")
-const questLocation = "";        // Where the quest takes place (e.g., "Whispering Mountains")
-const enemyType = "";       // What attacks them (e.g., "Shadow Dragon")
+const heroName = "Liviy Xtreme";        // Your hero's name (e.g., "Luna the Brave")
+const heroEmoji = "🧝🏾‍♀️";       // Your hero's emoji (e.g., "🧙" or "⚔️")
+const questItem = "Heart Fairy Key";       // What they're seeking (e.g., "Golden Keyboard")
+const questLocation = "Shadownmoon Forest";        // Where the quest takes place (e.g., "Whispering Mountains")
+const enemyType = "Displacer Beast";       // What attacks them (e.g., "Shadow Dragon")
+const secondEnemyType = "Shadow Wolf";     // Second enemy type
 
 // ---------------------------------------------
 // PART 2: STARTING STATUS (study this pattern!)
@@ -38,6 +39,7 @@ let gold = 20;              // Starting gold coins
 // You'll use choose() in Parts 4 and 6!
 
 const enemyDamage = randomBetween(10, 30);    // Random damage 10-30
+const secondEnemyDamage = randomBetween(15, 25); // Second enemy damage 15-25
 const treasureFound = randomBetween(25, 75);  // Random gold 25-75
 const foundPotion = coinFlip();               // true or false randomly
 
@@ -49,13 +51,16 @@ const foundPotion = coinFlip();               // true or false randomly
 // The enemy attacks! Subtract enemyDamage from health
 health = health - enemyDamage;
 
+// A second enemy appears! Subtract secondEnemyDamage from health
+health = health - secondEnemyDamage;
+
 // TODO: Add treasureFound to gold
-gold = ;
+gold = 50 + treasureFound;
 
 // TODO: If foundPotion is true, add 25 to health using choose()
 // Hint: choose(foundPotion, 25, 0) returns 25 if true, 0 if false
-const potionHealing = ;
-health = ;
+const potionHealing = 30;
+health = health + choose(foundPotion, potionHealing, 20);
 
 // =============================================
 // QUICK REFERENCE - Variables you can use:
@@ -71,15 +76,18 @@ health = ;
 // Fill in the ${} expressions to tell the story
 
 const storyText = `
-${heroEmoji} ${heroName} ventured into the ${}
-searching for the ${}.
+🧝🏾‍♀️ ${heroName} ventured into the ${questLocation}
+searching for the ${questItem}.
 
-A wild ${} attacked!
-Damage taken: ${}
+A wild ${enemyType} attacked!
+Damage taken: ${enemyDamage}
 
-${heroEmoji} ${} found a chest containing ${} gold!
+Sudddenly, a ${secondEnemyType} emerged from the shadows!
+Additional damage taken: ${secondEnemyDamage}
 
-Found a potion: ${} | Healed: ${}
+🧝🏾‍♀️ ${heroName} found a chest containing ${treasureFound} gold!
+
+Found a potion: ${foundPotion} | Healed: ${choose(foundPotion, potionHealing, 20)}
 `;
 
 // ---------------------------------------------
@@ -88,12 +96,12 @@ Found a potion: ${} | Healed: ${}
 // Did your hero survive? Health must be greater than 0
 
 // TODO: Create a boolean - is health greater than 0?
-const survived = ;
+const survived = health > 65;
 
 // TODO: Use choose() to pick the right message
 // If survived is true: "Quest Complete!"
 // If survived is false: "Quest Failed..."
-const survivalMessage = ;
+const survivalMessage = "Quest Complete!";
 
 // ---------------------------------------------
 // SHOW THE RESULTS

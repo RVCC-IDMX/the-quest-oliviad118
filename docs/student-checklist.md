@@ -19,7 +19,7 @@ Use this checklist as you work through the assignment. Check off each item to st
 
 ---
 
-## Parts 2-3: Don't skip these!
+## Parts 2-3: Don't skip these
 
 **No code to write here - just read and understand!**
 
